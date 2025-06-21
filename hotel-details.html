@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalji Hotela</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="hotel-details.css">
+</head>
+<body>
+    <nav class="navbar"> 
+        <div><h3>HotelApp</h3></div>
+        <div class="logo">
+            <span><a href="index.html">Pocetna</a></span>
+            <span><a href="#">Hoteli</a></span>
+            <span><a href="#">Ponuda</a></span>
+        </div>
+    </nav>
+
+    <div class="container hotel-details-container">
+        <div class="hotel-details">
+            <div class="hotel-image">
+                <img id="hotelImage" src="" alt="Hotel slika">
+            </div>
+            <div class="hotel-info-detailed">
+                <h1 id="hotelName"></h1>
+                <div class="hotel-meta">
+                    <p class="price" id="hotelPrice"></p>
+                    <div class="rating">
+                        <span>★★★★★</span>
+                    </div>
+                </div>
+                <div class="hotel-description">
+                    <h3>O hotelu</h3>
+                    <p id="hotelDescription"></p>
+                </div>
+                <div class="hotel-features">
+                    <h3>Sadržaji</h3>
+                    <ul>
+                        <li>✓ Besplatan WiFi</li>
+                        <li>✓ Parking</li>
+                        <li>✓ Spa centar</li>
+                        <li>✓ Restoran</li>
+                        <li>✓ Room service</li>
+                    </ul>
+                </div>
+                <button class="booking-button" onclick="openModal()">Rezervišite odmah</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal za rezervaciju -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Rezervacija</h2>
+            <form id="bookingForm" onsubmit="submitBooking(event)">
+                <div class="form-group">
+                    <label for="name">Ime i prezime:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkIn">Datum dolaska:</label>
+                    <input type="date" id="checkIn" required onchange="calculatePrice()">
+                </div>
+                <div class="form-group">
+                    <label for="checkOut">Datum odlaska:</label>
+                    <input type="date" id="checkOut" required onchange="calculatePrice()">
+                </div>
+                <div class="form-group">
+                    <label for="totalPrice">Ukupna cena:</label>
+                    <p id="totalPrice">0 $</p>
+                </div>
+                <button type="submit" class="booking-button">Potvrdi rezervaciju</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal za uspešnu rezervaciju -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-content">
+            <h2>Uspešna rezervacija!</h2>
+            <p>Vaša rezervacija je uspešno primljena.</p>
+            <button onclick="closeSuccessModal()" class="booking-button">U redu</button>
+        </div>
+    </div>
+
+    <script src="hotel-details.js"></script>
+</body>
+</html> 
