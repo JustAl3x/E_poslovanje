@@ -3,25 +3,56 @@
     border-radius: 15px;
     padding: 20px;
     margin-top: 30px;
+    box-sizing: border-box;
 }
 
 .hotel-details {
     display: flex;
     gap: 30px;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .hotel-image {
     flex: 1;
     max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.hotel-image img {
+.hotel-image .main-image {
     width: 100%;
-    height: 400px;
+    height: 500px;
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.additional-images {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.additional-images img {
+    flex: 1;
+    min-width: 0;
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.additional-images img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .hotel-info-detailed {
@@ -98,6 +129,7 @@
     width: 80%;
     max-width: 500px;
     position: relative;
+    box-sizing: border-box;
 }
 
 .close {
@@ -136,17 +168,224 @@
     margin-bottom: 20px;
 }
 
+/* Responsive stilovi */
+@media (max-width: 1024px) {
+    .hotel-details {
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    .hotel-image .main-image {
+        height: 400px;
+    }
+    
+    .additional-images img {
+        height: 150px;
+    }
+}
+
 @media (max-width: 768px) {
+    .hotel-details-container {
+        padding: 15px;
+        margin-top: 15px;
+    }
+    
     .hotel-details {
         flex-direction: column;
+        gap: 20px;
+        padding: 10px;
     }
     
     .hotel-image {
         max-width: 100%;
+        width: 100%;
+    }
+    
+    .hotel-image .main-image {
+        height: 300px;
+    }
+    
+    .additional-images {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .additional-images img {
+        width: 100%;
+        height: 150px;
+        flex: none;
+    }
+    
+    .hotel-info-detailed {
+        padding: 10px;
+    }
+    
+    .hotel-info-detailed h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .hotel-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin: 15px 0;
+    }
+    
+    .rating {
+        font-size: 20px;
+    }
+    
+    .hotel-description,
+    .hotel-features {
+        margin: 15px 0;
+    }
+    
+    .hotel-description h3,
+    .hotel-features h3 {
+        font-size: 18px;
+    }
+    
+    .hotel-features li {
+        font-size: 14px;
+    }
+    
+    .booking-button {
+        padding: 12px 20px;
+        font-size: 16px;
     }
 
     .modal-content {
-        width: 90%;
-        margin: 20% auto;
+        width: 95%;
+        max-width: 100%;
+        margin: 10% auto;
+        padding: 15px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .modal-content h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .close {
+        right: 10px;
+        top: 5px;
+        font-size: 24px;
+    }
+    
+    .form-group {
+        margin-bottom: 12px;
+    }
+    
+    .form-group label {
+        font-size: 14px;
+    }
+    
+    .form-group input {
+        padding: 10px;
+        font-size: 16px; /* Sprečava zoom na iOS */
+    }
+    
+    .success-content {
+        padding: 20px;
+    }
+    
+    .success-content h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .hotel-details-container {
+        padding: 10px;
+        border-radius: 10px;
+    }
+    
+    .hotel-details {
+        padding: 5px;
+    }
+    
+    .hotel-image .main-image {
+        height: 250px;
+        border-radius: 8px;
+    }
+    
+    .additional-images img {
+        height: 120px;
+    }
+    
+    .hotel-info-detailed h1 {
+        font-size: 20px;
+    }
+    
+    .hotel-meta .price {
+        font-size: 1.1rem;
+    }
+    
+    .rating {
+        font-size: 18px;
+    }
+    
+    .hotel-description p,
+    .hotel-features li {
+        font-size: 14px;
+    }
+    
+    .modal-content {
+        width: 100%;
+        margin: 5% auto;
+        padding: 20px 15px;
+        border-radius: 8px;
+    }
+    
+    .modal-content h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    
+    .form-group input {
+        padding: 8px;
+    }
+    
+    .booking-button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+/* Responsive za navbar */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .navbar > div:first-child h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+    
+    .logo {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+    
+    .logo span {
+        width: 100%;
+    }
+    
+    .logo a {
+        display: block;
+        padding: 8px;
+        font-size: 14px;
     }
 } 

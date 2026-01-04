@@ -57,6 +57,20 @@ body{
     padding: 20px;
 }
 
+/* Responsive za container */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 5px;
+    }
+}
+
 
 #hotels .item {
     display: inline-block; 
