@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Funkcije za rad sa modalom
 function openModal() {
-    document.getElementById('bookingModal').style.display = 'block';
+    document.getElementById('bookingModal').style.display = 'flex';
 }
 
 function closeModal() {
@@ -210,12 +210,9 @@ function submitBooking(event) {
     }
     
     // Pripremamo podatke za email
-    // VAŽNO: EmailJS očekuje 'to_email' ili 'user_email' za email adresu primaoca
     const emailData = {
         to_email: email.trim(),
-        user_email: email.trim(),  // Alternativno ime koje EmailJS može koristiti
         to_name: name,
-        user_name: name,  // Alternativno ime
         hotel_name: hotelName,
         check_in: checkIn,
         check_out: checkOut,
@@ -231,7 +228,7 @@ function submitBooking(event) {
             .then(function(response) {
                 // Prikazujemo poruku o uspešnoj rezervaciji
                 document.getElementById('bookingModal').style.display = 'none';
-                document.getElementById('successModal').style.display = 'block';
+                document.getElementById('successModal').style.display = 'flex';
                 
                 // Resetujemo formu
                 document.getElementById('bookingForm').reset();
@@ -272,7 +269,7 @@ function submitBooking(event) {
         // Test mod - EmailJS nije omogućen
         // Prikazujemo poruku o uspešnoj rezervaciji
         document.getElementById('bookingModal').style.display = 'none';
-        document.getElementById('successModal').style.display = 'block';
+        document.getElementById('successModal').style.display = 'flex';
         
         // Resetujemo formu
         document.getElementById('bookingForm').reset();
